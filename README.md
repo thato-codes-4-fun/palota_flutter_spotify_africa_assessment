@@ -58,7 +58,7 @@ The base URL for all calls is: https://palota-jobs-africa-spotify-fa.azurewebsit
 ### Detailed designs
 1. [Figma Designs](https://www.figma.com/file/HCaNpb2sdvY3fEbsTyEhpz/Palota-Spotify-Flutter?type=design)
 2. [Figma Prototype](https://www.figma.com/proto/HCaNpb2sdvY3fEbsTyEhpz/Palota-Spotify-Flutter?type=design&scaling=scale-down&page-id=0%3A1&node-id=42-281&starting-point-node-id=1%3A2) N.B. only one playlist is clickable in this prototype, in your submission every playlist should be clickable and the page nagivated to should show the correct content for that playlist
-3. [Adobe XD Specs](https://xd.adobe.com/view/773e9204-d782-4539-bae1-a55fc4d7e102-226d/) N.B. The specs will be helpful in getting the correct values to match designs (e.g. padding values, colours etc.)
+3. [Adobe XD Specs](https://xd.adobe.com/view/773e9204-d782-4539-bae1-a55fc4d7e102-226d/specs) N.B. The specs will be helpful in getting the correct values to match designs (e.g. padding values, colours etc.)
 
 
 Look at the API responses to figure out where to get the values to populate.
