@@ -40,39 +40,37 @@ The base URL for all calls is: https://palota-jobs-africa-spotify-fa.azurewebsit
 ### Required Tasks
 1. Integrate to the Palota Spotify Africa API to retrieve specific data in the `afro` category of Spotify.
 2. Complete the spotify category page ([`spotify_category.dart`](lib/features/spotify/presentation/pages/spotify_category.dart)) and integrate it to the API (feel free to split your code into mutliple files - the main page/widget for the category should however be in the `spotify_category.dart` file ). This page features the following:
-    a. A header with the name of the category, and the category's image
-    b. A grid list of all the playlists in the category (along with the name of the playlist and an image for the playlist). The API is paginated and as such will not give you all the playlists at once. You will need to implement pagination via infinite scrolling to allow the user view the entire list by scrolling down and having the data load as they do so.
+    - A header with the name of the category, and the category's image
+    - A grid list of all the playlists in the category (along with the name of the playlist and an image for the playlist). The API is paginated and as such will not give you all the playlists at once. You will need to implement pagination via infinite scrolling to allow the user view the entire list by scrolling down and having the data load as they do so.
 3. Create click-through navigation to the plylist page (hint: consider using the [route generator](lib/routes.dart))
 4. Complete the spotify playlist page ([`spotify_playlist.dart`](lib/features/spotify/presentation/pages/spotify_playlist.dart)) and integrate it to the API (feel free to split your code into mutliple files - the main page/widget for the playlist should however be in the `spotify_playlist.dart` file ). The playlist page features the following:
-    a. The feature image of the playlist, the name of the playlist, a description of the playlist as well as the amount of followers the playlist has (formatted with a thousands separator).
-    b. A list of all the tracks in the playlist including the album image of the track, the name of the track, a comma separated list of the artists in that track as well as the formated duration (`mm:ss`) of that track. N.B. There is no pagniation required for the list of tracks - use only the initial list of tracks you receive.
-    c. A horizontally scrolling list of all the unique artists featured in that playlist (N.B. the same artist may be featured in more than one track in the same playlist). For the artist list you only need to display their name and image.
+    - The feature image of the playlist, the name of the playlist, a description of the playlist as well as the amount of followers the playlist has (formatted with a thousands separator).
+    - A list of all the tracks in the playlist including the album image of the track, the name of the track, a comma separated list of the artists in that track as well as the formated duration (`mm:ss`) of that track. N.B. There is no pagniation required for the list of tracks - use only the initial list of tracks you receive.
+    - A horizontally scrolling list of all the unique artists featured in that playlist (N.B. the same artist may be featured in more than one track in the same playlist). For the artist list you only need to display their name and image.
 5. Your implemented app should match the supplied designs (below) as closely as possible. You will be graded on how well your implementation matches the design down to things like border radiuses, shadows and colours.
 6. Write clean code and gracefully handle errors (e.g. some data might be missing and the API may return 404s - in that case your code should be able to ommit that data without affecting the user experience). How readable your code is will also be used to grade your submission.
 
 ### Bonus Tasks
 1. Provide a client-side search/filter capability to filter the list of tracks based on user input. You can put the search/filter input on the app bar of the playlist page. You can also put it below the app bar, as long as it does not scroll with the content.
-3. Usage of a pattern that enforces clean code.
+2. Usage of a pattern that enforces clean code.
 
 
 ### Detailed designs
-1. [Figma Designs](https://www.figma.com/file/HCaNpb2sdvY3fEbsTyEhpz/Palota-Spotify-Flutter?type=design) 
-    <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FHCaNpb2sdvY3fEbsTyEhpz%2FPalota-Spotify-Flutter%3Ftype%3Ddesign%26node-id%3D0%253A1%26t%3DvkmavmwQ0wNOM4Rp-1" allowfullscreen></iframe>
+1. [Figma Designs](https://www.figma.com/file/HCaNpb2sdvY3fEbsTyEhpz/Palota-Spotify-Flutter?type=design)
 2. [Figma Prototype](https://www.figma.com/proto/HCaNpb2sdvY3fEbsTyEhpz/Palota-Spotify-Flutter?type=design&scaling=scale-down&page-id=0%3A1&node-id=42-281&starting-point-node-id=1%3A2) N.B. only one playlist is clickable in this prototype, in your submission every playlist should be clickable and the page nagivated to should show the correct content for that playlist
 3. [Adobe XD Specs](https://xd.adobe.com/view/773e9204-d782-4539-bae1-a55fc4d7e102-226d/) N.B. The specs will be helpful in getting the correct values to match designs (e.g. padding values, colours etc.)
-    <iframe width="390" height="844" src="https://xd.adobe.com/embed/773e9204-d782-4539-bae1-a55fc4d7e102-226d/" frameborder="0" allowfullscreen></iframe>
 
 
 Look at the API to figure out where to get the values to populate.
 
 N.B. The designs repeat some values and have some incorrect as they are just for illustration. In your completed app, use the data from the API as is.
-
+![animation](https://github.com/PalotaCompany/palota_flutter_spotify_africa_assessment/assets/4819593/24f93450-a245-444e-a9ed-63fc7cd2524f)
 
 *The data in the designs is not accurate or complete*
 
 
 ## Submission
-Once done with the tasks, commit all your code and push it to your forked remote github repository. Submit a link to your forked repo (with relevant branch - ideally main) to the email which will be provided to you separately when the assessment is assigned to you. 
+Once done with the tasks, commit all your code and push it to your forked remote github repository before the deadline which will be provided to you. Submit a link to your forked repo (with relevant branch - ideally main) to the email which will be provided to you separately when the assessment is assigned to you. 
 
 **Important: Make sure your app compiles and runs before submitting. We will not be able to grade the app if it doesn't run** 
 
