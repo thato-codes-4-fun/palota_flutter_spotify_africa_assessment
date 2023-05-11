@@ -19,7 +19,7 @@ class SpotifyCategory extends StatelessWidget {
         title: const Text("{CategoryName}"),
         actions: [
           IconButton(
-            icon: const Icon(Icons.info),
+            icon: const Icon(Icons.info_outline),
             onPressed: () => Navigator.of(context).pushNamed(AppRoutes.about),
           ),
         ],

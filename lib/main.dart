@@ -13,7 +13,7 @@ class PalotaAssessmentApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Palota Spotify Africa Assessment',
-      theme: ThemeData.dark(),
+      theme: ThemeData.dark(useMaterial3: true),
       initialRoute: AppRoutes.startUp,
       onGenerateRoute: AppRoutes.onGenerateRoute,
     );
