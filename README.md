@@ -61,9 +61,10 @@ The base URL for all calls is: https://palota-jobs-africa-spotify-fa.azurewebsit
 3. [Adobe XD Specs](https://xd.adobe.com/view/773e9204-d782-4539-bae1-a55fc4d7e102-226d/) N.B. The specs will be helpful in getting the correct values to match designs (e.g. padding values, colours etc.)
 
 
-Look at the API to figure out where to get the values to populate.
+Look at the API responses to figure out where to get the values to populate.
 
 N.B. The designs repeat some values and have some incorrect as they are just for illustration. In your completed app, use the data from the API as is.
+
 ![animation](https://github.com/PalotaCompany/palota_flutter_spotify_africa_assessment/assets/4819593/24f93450-a245-444e-a9ed-63fc7cd2524f)
 
 *The data in the designs is not accurate or complete*
