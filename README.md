@@ -65,10 +65,9 @@ Look at the API responses to figure out where to get the values to populate.
 
 N.B. The designs repeat some values and have some incorrect as they are just for illustration. In your completed app, use the data from the API as is.
 
-![animation](https://github.com/PalotaCompany/palota_flutter_spotify_africa_assessment/assets/4819593/24f93450-a245-444e-a9ed-63fc7cd2524f)
+![resized_palota_anim](https://github.com/PalotaCompany/palota_flutter_spotify_africa_assessment/assets/4819593/1e1f87a1-789a-4d77-bbc0-387f410b1b8a)
 
 *The data in the designs is not accurate or complete*
-
 
 ## Submission
 Once done with the tasks, commit all your code and push it to your forked remote github repository before the deadline which will be provided to you. Submit a link to your forked repo (with relevant branch - ideally main) to the email which will be provided to you separately when the assessment is assigned to you. 
