@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spotify_africa_assessment/colors.dart';
 
 class PlaylistHeader extends StatefulWidget {
   final String imageUrl;
@@ -19,9 +20,9 @@ class _PlaylistHeaderState extends State<PlaylistHeader> {
         ),
         Expanded(
           child: Container(
-            decoration: BoxDecoration(
-              color: Colors.grey[800],
-              borderRadius: const BorderRadius.only(
+            decoration: const BoxDecoration(
+              color: AppColors.greyish,
+              borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(25),
                 bottomLeft: Radius.circular(25),
               ),
@@ -30,11 +31,8 @@ class _PlaylistHeaderState extends State<PlaylistHeader> {
             width: MediaQuery.of(context).size.width,
             child: Row(
               children: [
-                ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    bottomLeft: Radius.circular(20),
-                  ),
+                Padding(
+                  padding: const EdgeInsets.all(8),
                   child: Image.network(
                     widget.imageUrl,
                   ),
