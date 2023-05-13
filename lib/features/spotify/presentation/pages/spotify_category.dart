@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spotify_africa_assessment/colors.dart';
 import 'package:flutter_spotify_africa_assessment/routes.dart';
+import 'package:flutter_spotify_africa_assessment/widgets/header.dart';
+import '../../../../api/spotify.dart';
 
 // TODO: fetch and populate playlist info and allow for click-through to detail
 // Feel free to change this to a stateful widget if necessary
@@ -14,9 +16,10 @@ class SpotifyCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future<dynamic> data = spotifyApi();
     return Scaffold(
       appBar: AppBar(
-        title: const Text("{CategoryName}"),
+        title: const Text("Afro"),
         actions: [
           IconButton(
             icon: const Icon(Icons.info_outline),
@@ -39,11 +42,29 @@ class SpotifyCategory extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.all(16),
-        child: Center(
-          child: Text(
-            '''Populate with playlist info for category '$categoryId', click on playlist to view playlist detail''',
-            textAlign: TextAlign.center,
-          ),
+        child: FutureBuilder(
+          future: data,
+          builder: (BuildContext context, snapshot) {
+            if (snapshot.hasData) {
+              String name = snapshot.data['name'];
+              String imageUrl = snapshot.data['icons'][0]['url'];
+              return Column(
+                children: [
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  //category row
+                  PlaylistHeader(imageUrl: imageUrl, name: name),
+                ],
+              );
+            } else if (snapshot.hasError) {
+              return const Center(
+                child: Text('Failed to load data'),
+              );
+            } else {
+              return const CircularProgressIndicator();
+            }
+          },
         ),
       ),
     );
