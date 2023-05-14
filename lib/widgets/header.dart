@@ -15,9 +15,6 @@ class _PlaylistHeaderState extends State<PlaylistHeader> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const SizedBox(
-          width: 28,
-        ),
         Expanded(
           child: Container(
             decoration: const BoxDecoration(
@@ -32,16 +29,16 @@ class _PlaylistHeaderState extends State<PlaylistHeader> {
             child: Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(10),
                   child: Image.network(
                     widget.imageUrl,
                   ),
                 ),
                 const SizedBox(
-                  width: 15,
+                  width: 0,
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(0),
+                  padding: const EdgeInsets.all(10),
                   child: Row(
                     children: [
                       Text(
@@ -59,7 +56,7 @@ class _PlaylistHeaderState extends State<PlaylistHeader> {
                         style: TextStyle(
                           fontSize: 28,
                         ),
-                      )
+                      ),
                     ],
                   ),
                 )

@@ -50,23 +50,41 @@ class SpotifyCategory extends StatelessWidget {
               String name = 'Afro';
               String imageUrl =
                   'https://t.scdn.co/images/b505b01bbe0e490cbe43b07f16212892.jpeg';
-              String playlistImage =
-                  snapshot.data['playlists']['items'][1]['images'][0]['url'];
-              String playlistName =
-                  snapshot.data['playlists']['items'][1]['name'];
-              return GridView.count(
-                  crossAxisCount: 2,
-                  children: List.generate(
-                    snapshot.data['playlists']['items'].length,
-                    (index) {
-                      // return
-                      return PlayListItem(
-                          name: snapshot.data['playlists']['items'][index]
-                              ['name'],
-                          imageUrl: snapshot.data['playlists']['items'][index]
-                              ['images'][0]['url']);
-                    },
-                  ));
+              // String playlistImage =
+              //     snapshot.data['playlists']['items'][1]['images'][0]['url'];
+              // String playlistName =
+              //     snapshot.data['playlists']['items'][1]['name'];
+              return CustomScrollView(
+                slivers: [
+                  SliverAppBar(
+                    title: PlaylistHeader(imageUrl: imageUrl, name: name),
+                  ),
+                  SliverPadding(
+                    padding: const EdgeInsets.only(top: 30),
+                    sliver: SliverGrid(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 10.0,
+                        crossAxisSpacing: 5.0,
+                        childAspectRatio: 1.0,
+                      ),
+                      delegate: SliverChildBuilderDelegate(
+                        (BuildContext context, int index) {
+                          return Container(
+                            child: PlayListItem(
+                                name: snapshot.data['playlists']['items'][1]
+                                    ['name'],
+                                imageUrl: snapshot.data['playlists']['items']
+                                    [index]['images'][0]['url']),
+                          );
+                        },
+                        childCount: 10,
+                      ),
+                    ),
+                  ),
+                ],
+              );
             } else if (snapshot.hasError) {
               return const Center(
                 child: Text('Failed to load data'),
@@ -80,3 +98,19 @@ class SpotifyCategory extends StatelessWidget {
     );
   }
 }
+
+
+
+// GridView.count(
+//                   crossAxisCount: 2,
+//                   children: List.generate(
+//                     snapshot.data['playlists']['items'].length,
+//                     (index) {
+//                       // return
+//                       return PlayListItem(
+//                           name: snapshot.data['playlists']['items'][index]
+//                               ['name'],
+//                           imageUrl: snapshot.data['playlists']['items'][index]
+//                               ['images'][0]['url']);
+//                     },
+//                   ))
