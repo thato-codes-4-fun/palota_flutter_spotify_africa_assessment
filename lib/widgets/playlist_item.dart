@@ -15,8 +15,9 @@ class _PlayListItemState extends State<PlayListItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.all(5),
       width: 200,
-      height: 250,
+      height: 200,
       decoration: const BoxDecoration(
         color: AppColors.greyish,
         borderRadius: BorderRadius.all(Radius.circular(25)),
@@ -32,22 +33,23 @@ class _PlayListItemState extends State<PlayListItem> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
             ),
-            padding: EdgeInsets.all(10),
             child: Image.network(
               widget.imageUrl,
-              width: 200,
-              height: 180,
+              width: MediaQuery.of(context).size.width,
+              height: 148,
               fit: BoxFit.fill,
             ),
           ),
-          Container(
-            margin: const EdgeInsets.only(left: 15),
-            child: Text(
-              widget.name,
-              style: const TextStyle(
-                fontSize: 18,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
+          Flexible(
+            child: Container(
+              margin: const EdgeInsets.all(5),
+              child: Text(
+                widget.name,
+                style: const TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),

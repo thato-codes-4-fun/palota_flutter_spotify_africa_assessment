@@ -51,24 +51,22 @@ class SpotifyCategory extends StatelessWidget {
               String imageUrl =
                   'https://t.scdn.co/images/b505b01bbe0e490cbe43b07f16212892.jpeg';
               String playlistImage =
-                  snapshot.data['playlists']['items'][0]['images'][0]['url'];
+                  snapshot.data['playlists']['items'][1]['images'][0]['url'];
               String playlistName =
-                  snapshot.data['playlists']['items'][0]['name'];
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  //category row
-                  PlaylistHeader(imageUrl: imageUrl, name: name),
-                  //grid of playlists
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  PlayListItem(name: playlistName, imageUrl: playlistImage)
-                ],
-              );
+                  snapshot.data['playlists']['items'][1]['name'];
+              return GridView.count(
+                  crossAxisCount: 2,
+                  children: List.generate(
+                    snapshot.data['playlists']['items'].length,
+                    (index) {
+                      // return
+                      return PlayListItem(
+                          name: snapshot.data['playlists']['items'][index]
+                              ['name'],
+                          imageUrl: snapshot.data['playlists']['items'][index]
+                              ['images'][0]['url']);
+                    },
+                  ));
             } else if (snapshot.hasError) {
               return const Center(
                 child: Text('Failed to load data'),
