@@ -57,6 +57,7 @@ class SpotifyCategory extends StatelessWidget {
               return CustomScrollView(
                 slivers: [
                   SliverAppBar(
+                    toolbarHeight: 80,
                     title: PlaylistHeader(imageUrl: imageUrl, name: name),
                   ),
                   SliverPadding(
@@ -66,14 +67,14 @@ class SpotifyCategory extends StatelessWidget {
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         mainAxisSpacing: 10.0,
-                        crossAxisSpacing: 5.0,
-                        childAspectRatio: 1.0,
+                        crossAxisSpacing: 9.0,
+                        childAspectRatio: 0.9,
                       ),
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
                           return Container(
                             child: PlayListItem(
-                                name: snapshot.data['playlists']['items'][1]
+                                name: snapshot.data['playlists']['items'][index]
                                     ['name'],
                                 imageUrl: snapshot.data['playlists']['items']
                                     [index]['images'][0]['url']),

@@ -24,19 +24,17 @@ class _PlayListItemState extends State<PlayListItem> {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const SizedBox(
             height: 5,
           ),
-          Container(
-            //TODO need to round image
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
-            ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
             child: Image.network(
               widget.imageUrl,
               width: MediaQuery.of(context).size.width,
-              height: 148,
+              height: 170,
               fit: BoxFit.fill,
             ),
           ),
