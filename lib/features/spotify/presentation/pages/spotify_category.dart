@@ -75,13 +75,13 @@ class _SpotifyCategoryState extends State<SpotifyCategory> {
                 sliver: SliverGrid(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    mainAxisSpacing: 10.0,
-                    crossAxisSpacing: 9.0,
-                    childAspectRatio: 0.9,
+                    mainAxisSpacing: 12.0,
+                    crossAxisSpacing: 10.0,
+                    childAspectRatio: 0.8,
                   ),
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
-                      return Container(
+                      return Flexible(
                         child: PlayListItem(
                             name: data[index]['name'],
                             imageUrl: data[index]['images'][0]['url']),
@@ -96,74 +96,3 @@ class _SpotifyCategoryState extends State<SpotifyCategory> {
     );
   }
 }
-
-
-// FutureBuilder(
-//           future: data,
-//           builder: (BuildContext context, snapshot) {
-//             if (snapshot.hasData) {
-//               String name = 'Afro';
-//               String imageUrl =
-//                   'https://t.scdn.co/images/b505b01bbe0e490cbe43b07f16212892.jpeg';
-//               // String playlistImage =
-//               //     snapshot.data['playlists']['items'][1]['images'][0]['url'];
-//               // String playlistName =
-//               //     snapshot.data['playlists']['items'][1]['name'];
-//               return CustomScrollView(
-//                 slivers: [
-//                   SliverAppBar(
-//                     toolbarHeight: 80,
-//                     title: PlaylistHeader(imageUrl: imageUrl, name: name),
-//                   ),
-//                   SliverPadding(
-//                     padding: const EdgeInsets.only(top: 30),
-//                     sliver: SliverGrid(
-//                       gridDelegate:
-//                           const SliverGridDelegateWithFixedCrossAxisCount(
-//                         crossAxisCount: 2,
-//                         mainAxisSpacing: 10.0,
-//                         crossAxisSpacing: 9.0,
-//                         childAspectRatio: 0.9,
-//                       ),
-//                       delegate: SliverChildBuilderDelegate(
-//                         (BuildContext context, int index) {
-//                           return Container(
-//                             child: PlayListItem(
-//                                 name: snapshot.data[index]['name'],
-//                                 imageUrl: snapshot.data[index]['images'][0]
-//                                     ['url']),
-//                           );
-//                         },
-//                         childCount: 10,
-//                       ),
-//                     ),
-//                   ),
-//                 ],
-//               );
-//             } else if (snapshot.hasError) {
-//               return const Center(
-//                 child: Text('Failed to load data'),
-//               );
-//             } else {
-//               return const Center(
-//                 child: CircularProgressIndicator(),
-//               );
-//             }
-//           },
-//         )
-
-
-
-// GridView.count(
-//                   crossAxisCount: 2,
-//                   children: List.generate(
-//                     snapshot.data['playlists']['items'].length,
-//                     (index) {
-//                       // return
-//                       return PlayListItem(
-//                           name: snapshot.data['playlists']['items'][index]
-//                               ['name'],
-//                           imageUrl: snapshot.data['playlists']['items'][index]
-//                               ['images'][0]['url']);
-//                     },
-//                   ))

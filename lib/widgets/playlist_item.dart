@@ -15,7 +15,7 @@ class _PlayListItemState extends State<PlayListItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(5),
+      padding: const EdgeInsets.all(5),
       width: 200,
       height: 200,
       decoration: const BoxDecoration(
