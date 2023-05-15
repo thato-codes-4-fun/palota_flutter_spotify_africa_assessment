@@ -91,7 +91,9 @@ class SpotifyCategory extends StatelessWidget {
                 child: Text('Failed to load data'),
               );
             } else {
-              return const CircularProgressIndicator();
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
             }
           },
         ),

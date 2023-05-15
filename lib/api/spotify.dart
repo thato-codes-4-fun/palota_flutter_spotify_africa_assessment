@@ -33,7 +33,6 @@ Future<dynamic> spotifyGetPlayLists() async {
 
   if (response.statusCode == 200) {
     // Request successful
-    print(jsonDecode(response.body));
     return jsonDecode(response.body);
   } else {
     // Request failed

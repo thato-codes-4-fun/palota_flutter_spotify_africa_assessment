@@ -44,6 +44,7 @@ class _PlayListItemState extends State<PlayListItem> {
               child: Text(
                 widget.name,
                 style: const TextStyle(
+                  overflow: TextOverflow.ellipsis,
                   fontSize: 18,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
