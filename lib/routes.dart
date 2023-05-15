@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spotify_africa_assessment/features/about/presentation/pages/about.dart';
 import 'package:flutter_spotify_africa_assessment/features/landing/presentation/pages/landing.dart';
 import 'package:flutter_spotify_africa_assessment/features/spotify/presentation/pages/spotify_category.dart';
+import 'package:flutter_spotify_africa_assessment/features/spotify/presentation/pages/spotify_playlist.dart';
 
 class AppRoutes {
   /// App start up (loading) page
@@ -12,6 +13,9 @@ class AppRoutes {
 
   /// Spotify Category Page
   static const String spotifyCategory = '/spotify/category';
+
+  //spotify playlist page
+  static const String spotifyPlaylist = '/spotify/playlist';
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -36,6 +40,12 @@ class AppRoutes {
       /* TODO: handle other routes
       you can extract parameters from settings.arguments if necessary 
       https://flutter.dev/docs/cookbook/navigation/navigate-with-arguments#alternatively-extract-the-arguments-using-ongenerateroute*/
+      case spotifyPlaylist:
+        final String playListID = settings.arguments as String;
+        return MaterialPageRoute(
+            builder: (BuildContext context) =>
+                SpotifyPlaylist(playListID: playListID),
+            settings: settings);
       default:
         throw UnimplementedError();
     }

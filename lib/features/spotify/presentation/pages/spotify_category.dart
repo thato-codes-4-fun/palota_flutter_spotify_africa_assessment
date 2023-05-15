@@ -5,8 +5,6 @@ import 'package:flutter_spotify_africa_assessment/widgets/header.dart';
 import 'package:flutter_spotify_africa_assessment/widgets/playlist_item.dart';
 import '../../../../api/spotifyApi.dart';
 
-// TODO: fetch and populate playlist info and allow for click-through to detail
-// Feel free to change this to a stateful widget if necessary
 class SpotifyCategory extends StatefulWidget {
   final String categoryId;
 
@@ -90,7 +88,8 @@ class _SpotifyCategoryState extends State<SpotifyCategory> {
             slivers: [
               SliverAppBar(
                 toolbarHeight: 80,
-                title: PlaylistHeader(imageUrl: imageUrl, name: name),
+                title:
+                    PlaylistHeader(imageUrl: imageUrl, name: widget.categoryId),
               ),
               SliverPadding(
                 padding: const EdgeInsets.only(top: 30),
@@ -107,6 +106,9 @@ class _SpotifyCategoryState extends State<SpotifyCategory> {
                         return InkWell(
                           onTap: () {
                             print('clicked on index ${data[index]['name']}');
+                            Navigator.of(context).pushNamed(
+                                AppRoutes.spotifyPlaylist,
+                                arguments: data[index]['name']);
                           },
                           child: PlayListItem(
                               name: data[index]['name'],
