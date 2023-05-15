@@ -104,9 +104,14 @@ class _SpotifyCategoryState extends State<SpotifyCategory> {
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
                       if (index < data.length) {
-                        return PlayListItem(
-                            name: data[index]['name'],
-                            imageUrl: data[index]['images'][0]['url']);
+                        return InkWell(
+                          onTap: () {
+                            print('clicked on index ${data[index]['name']}');
+                          },
+                          child: PlayListItem(
+                              name: data[index]['name'],
+                              imageUrl: data[index]['images'][0]['url']),
+                        );
                       } else {
                         return const Center(
                           child: CircularProgressIndicator(),

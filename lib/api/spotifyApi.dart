@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -16,8 +15,8 @@ Future<dynamic> spotifyHeader() async {
     // Request successful
     return jsonDecode(response.body);
   } else {
-    // Request failed
-    return const Text('error fetching playlist');
+    // Request faileds
+    return [];
   }
 }
 
