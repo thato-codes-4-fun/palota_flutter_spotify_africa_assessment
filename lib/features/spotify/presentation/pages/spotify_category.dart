@@ -7,7 +7,7 @@ import '../../../../api/spotify.dart';
 
 // TODO: fetch and populate playlist info and allow for click-through to detail
 // Feel free to change this to a stateful widget if necessary
-class SpotifyCategory extends StatelessWidget {
+class SpotifyCategory extends StatefulWidget {
   final String categoryId;
 
   const SpotifyCategory({
@@ -16,8 +16,29 @@ class SpotifyCategory extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<SpotifyCategory> createState() => _SpotifyCategoryState();
+}
+
+class _SpotifyCategoryState extends State<SpotifyCategory> {
+  List data = [];
+  String name = 'Afro';
+  String imageUrl =
+      'https://t.scdn.co/images/b505b01bbe0e490cbe43b07f16212892.jpeg';
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  Future<void> fetchData() async {
+    var playList = await spotifyGetPlayLists();
+    setState(() {
+      data = playList;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    Future<dynamic> data = spotifyGetPlayLists();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Afro"),
@@ -42,65 +63,94 @@ class SpotifyCategory extends StatelessWidget {
         ),
       ),
       body: Container(
-        padding: const EdgeInsets.all(16),
-        child: FutureBuilder(
-          future: data,
-          builder: (BuildContext context, snapshot) {
-            if (snapshot.hasData) {
-              String name = 'Afro';
-              String imageUrl =
-                  'https://t.scdn.co/images/b505b01bbe0e490cbe43b07f16212892.jpeg';
-              // String playlistImage =
-              //     snapshot.data['playlists']['items'][1]['images'][0]['url'];
-              // String playlistName =
-              //     snapshot.data['playlists']['items'][1]['name'];
-              return CustomScrollView(
-                slivers: [
-                  SliverAppBar(
-                    toolbarHeight: 80,
-                    title: PlaylistHeader(imageUrl: imageUrl, name: name),
+          padding: const EdgeInsets.all(16),
+          child: CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                toolbarHeight: 80,
+                title: PlaylistHeader(imageUrl: imageUrl, name: name),
+              ),
+              SliverPadding(
+                padding: const EdgeInsets.only(top: 30),
+                sliver: SliverGrid(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 10.0,
+                    crossAxisSpacing: 9.0,
+                    childAspectRatio: 0.9,
                   ),
-                  SliverPadding(
-                    padding: const EdgeInsets.only(top: 30),
-                    sliver: SliverGrid(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 10.0,
-                        crossAxisSpacing: 9.0,
-                        childAspectRatio: 0.9,
-                      ),
-                      delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
-                          return Container(
-                            child: PlayListItem(
-                                name: snapshot.data['playlists']['items'][index]
-                                    ['name'],
-                                imageUrl: snapshot.data['playlists']['items']
-                                    [index]['images'][0]['url']),
-                          );
-                        },
-                        childCount: 10,
-                      ),
-                    ),
+                  delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                      return Container(
+                        child: PlayListItem(
+                            name: data[index]['name'],
+                            imageUrl: data[index]['images'][0]['url']),
+                      );
+                    },
+                    childCount: data.length,
                   ),
-                ],
-              );
-            } else if (snapshot.hasError) {
-              return const Center(
-                child: Text('Failed to load data'),
-              );
-            } else {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          },
-        ),
-      ),
+                ),
+              ),
+            ],
+          )),
     );
   }
 }
+
+
+// FutureBuilder(
+//           future: data,
+//           builder: (BuildContext context, snapshot) {
+//             if (snapshot.hasData) {
+//               String name = 'Afro';
+//               String imageUrl =
+//                   'https://t.scdn.co/images/b505b01bbe0e490cbe43b07f16212892.jpeg';
+//               // String playlistImage =
+//               //     snapshot.data['playlists']['items'][1]['images'][0]['url'];
+//               // String playlistName =
+//               //     snapshot.data['playlists']['items'][1]['name'];
+//               return CustomScrollView(
+//                 slivers: [
+//                   SliverAppBar(
+//                     toolbarHeight: 80,
+//                     title: PlaylistHeader(imageUrl: imageUrl, name: name),
+//                   ),
+//                   SliverPadding(
+//                     padding: const EdgeInsets.only(top: 30),
+//                     sliver: SliverGrid(
+//                       gridDelegate:
+//                           const SliverGridDelegateWithFixedCrossAxisCount(
+//                         crossAxisCount: 2,
+//                         mainAxisSpacing: 10.0,
+//                         crossAxisSpacing: 9.0,
+//                         childAspectRatio: 0.9,
+//                       ),
+//                       delegate: SliverChildBuilderDelegate(
+//                         (BuildContext context, int index) {
+//                           return Container(
+//                             child: PlayListItem(
+//                                 name: snapshot.data[index]['name'],
+//                                 imageUrl: snapshot.data[index]['images'][0]
+//                                     ['url']),
+//                           );
+//                         },
+//                         childCount: 10,
+//                       ),
+//                     ),
+//                   ),
+//                 ],
+//               );
+//             } else if (snapshot.hasError) {
+//               return const Center(
+//                 child: Text('Failed to load data'),
+//               );
+//             } else {
+//               return const Center(
+//                 child: CircularProgressIndicator(),
+//               );
+//             }
+//           },
+//         )
 
 
 

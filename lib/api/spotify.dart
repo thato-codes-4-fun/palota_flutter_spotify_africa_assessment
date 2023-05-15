@@ -22,6 +22,7 @@ Future<dynamic> spotifyHeader() async {
 }
 
 Future<dynamic> spotifyGetPlayLists() async {
+  List playylists = [];
   var url = Uri.parse(
       'https://palota-jobs-africa-spotify-fa.azurewebsites.net/api/browse/categories/afro/playlists?offset=0&limit=10');
 
@@ -33,9 +34,11 @@ Future<dynamic> spotifyGetPlayLists() async {
 
   if (response.statusCode == 200) {
     // Request successful
-    return jsonDecode(response.body);
+    var data = jsonDecode(response.body);
+    playylists = data['playlists']['items'] as List;
+    return playylists;
   } else {
     // Request failed
-    return const Text('error fetching playlist');
+    return [];
   }
 }
