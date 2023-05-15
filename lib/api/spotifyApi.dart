@@ -21,10 +21,10 @@ Future<dynamic> spotifyHeader() async {
   }
 }
 
-Future<dynamic> spotifyGetPlayLists() async {
+Future<dynamic> spotifyGetPlayLists(int offset, int limit) async {
   List playylists = [];
   var url = Uri.parse(
-      'https://palota-jobs-africa-spotify-fa.azurewebsites.net/api/browse/categories/afro/playlists?offset=0&limit=10');
+      'https://palota-jobs-africa-spotify-fa.azurewebsites.net/api/browse/categories/afro/playlists?offset=$offset&limit=$limit');
 
   var response = await http.get(url, headers: {
     'Content-Type': 'application/json',
