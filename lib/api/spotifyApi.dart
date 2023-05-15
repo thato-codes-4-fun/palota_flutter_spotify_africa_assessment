@@ -41,3 +41,25 @@ Future<dynamic> spotifyGetPlayLists(int offset, int limit) async {
     return [];
   }
 }
+
+Future<dynamic> spotifyGetSpecificPlayList(String playlistID) async {
+  List playylists = [];
+  var url = Uri.parse(
+      'https://palota-jobs-africa-spotify-fa.azurewebsites.net/api/playlists/$playlistID');
+
+  var response = await http.get(url, headers: {
+    'Content-Type': 'application/json',
+    'x-functions-key':
+        '_q6Qaip9V-PShHzF8q9l5yexp-z9IqwZB_o_6x882ts3AzFuo0DxuQ==',
+  });
+
+  if (response.statusCode == 200) {
+    // Request successful
+    var data = jsonDecode(response.body);
+    playylists = data['playlists']['items'] as List;
+    return playylists;
+  } else {
+    // Request failed
+    return [];
+  }
+}

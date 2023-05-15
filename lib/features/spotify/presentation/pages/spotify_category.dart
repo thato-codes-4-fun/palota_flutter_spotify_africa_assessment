@@ -82,7 +82,11 @@ class _SpotifyCategoryState extends State<SpotifyCategory> {
         ),
       ),
       body: Container(
-          padding: const EdgeInsets.all(15),
+          margin: const EdgeInsets.only(top: 30),
+          padding: const EdgeInsets.only(
+            left: 10,
+            right: 10,
+          ),
           child: CustomScrollView(
             controller: scrollController,
             slivers: [
@@ -105,10 +109,9 @@ class _SpotifyCategoryState extends State<SpotifyCategory> {
                       if (index < data.length) {
                         return InkWell(
                           onTap: () {
-                            print('clicked on index ${data[index]['name']}');
                             Navigator.of(context).pushNamed(
                                 AppRoutes.spotifyPlaylist,
-                                arguments: data[index]['name']);
+                                arguments: data[index]['id']);
                           },
                           child: PlayListItem(
                               name: data[index]['name'],

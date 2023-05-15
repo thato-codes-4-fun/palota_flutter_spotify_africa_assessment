@@ -37,9 +37,6 @@ class AppRoutes {
           ),
           settings: settings,
         );
-      /* TODO: handle other routes
-      you can extract parameters from settings.arguments if necessary 
-      https://flutter.dev/docs/cookbook/navigation/navigate-with-arguments#alternatively-extract-the-arguments-using-ongenerateroute*/
       case spotifyPlaylist:
         final String playListID = settings.arguments as String;
         return MaterialPageRoute(
