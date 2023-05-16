@@ -43,7 +43,19 @@ Future<dynamic> spotifyGetPlayLists(int offset, int limit) async {
 }
 
 Future<dynamic> spotifyGetSpecificPlayList(String playlistID) async {
-  List playylists = [];
+//image
+
+//name
+
+//description
+
+//followers
+
+//songs
+
+//featured artists
+
+  // List playylists = [];
   var url = Uri.parse(
       'https://palota-jobs-africa-spotify-fa.azurewebsites.net/api/playlists/$playlistID');
 
@@ -56,10 +68,24 @@ Future<dynamic> spotifyGetSpecificPlayList(String playlistID) async {
   if (response.statusCode == 200) {
     // Request successful
     var data = jsonDecode(response.body);
-    playylists = data['playlists']['items'] as List;
-    return playylists;
+
+    return data;
   } else {
     // Request failed
     return [];
   }
 }
+
+
+
+//image
+
+//name
+
+//description
+
+//followers
+
+//songs
+
+//featured artists
