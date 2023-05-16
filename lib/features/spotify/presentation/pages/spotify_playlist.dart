@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spotify_africa_assessment/api/spotifyApi.dart';
 import 'package:flutter_spotify_africa_assessment/colors.dart';
+import 'package:flutter_spotify_africa_assessment/widgets/spotify_playlist/trackcard.dart';
 
 //TODO: complete this page - you may choose to change it to a stateful widget if necessary
 class SpotifyPlaylist extends StatefulWidget {
@@ -38,8 +39,6 @@ class _SpotifyPlaylistState extends State<SpotifyPlaylist> {
               int followers = snapshot.data['followers']['total'];
               List<dynamic> tracks = snapshot.data['tracks']['items'];
               return SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -112,19 +111,40 @@ class _SpotifyPlaylistState extends State<SpotifyPlaylist> {
                         height: 16,
                       ),
                       Container(
-                          width: 326,
-                          height: 4,
-                          decoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              colors: <Color>[
-                                AppColors.blue,
-                                AppColors.cyan,
-                                AppColors.green,
-                              ],
-                            ),
-                          )),
+                        width: 326,
+                        height: 4,
+                        decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: <Color>[
+                              AppColors.blue,
+                              AppColors.cyan,
+                              AppColors.green,
+                            ],
+                          ),
+                        ),
+                      ),
+                      ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (BuildContext context, int index) {
+                          String trackName = tracks[index]['track']['name'];
+                          int trackDuration =
+                              tracks[index]['track']['duration_ms'];
+                          String trackArtist =
+                              tracks[index]['track']['artists'][0]['name'];
+                          String imageUrl = tracks[index]['track']['album']
+                              ['images'][0]['url'];
+                          return trackCard(
+                            trackName,
+                            imageUrl,
+                            trackDuration,
+                            trackArtist,
+                          );
+                        },
+                        itemCount: tracks.length,
+                      )
                     ],
                   ),
                 ),
@@ -148,3 +168,6 @@ class _SpotifyPlaylistState extends State<SpotifyPlaylist> {
     );
   }
 }
+
+
+

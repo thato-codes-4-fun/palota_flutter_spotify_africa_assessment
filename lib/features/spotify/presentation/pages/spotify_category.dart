@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spotify_africa_assessment/colors.dart';
 import 'package:flutter_spotify_africa_assessment/routes.dart';
-import 'package:flutter_spotify_africa_assessment/widgets/header.dart';
-import 'package:flutter_spotify_africa_assessment/widgets/playlist_item.dart';
+import 'package:flutter_spotify_africa_assessment/widgets/spotify_category/header.dart';
+import 'package:flutter_spotify_africa_assessment/widgets/spotify_category/playlist_item.dart';
 import '../../../../api/spotifyApi.dart';
 
 class SpotifyCategory extends StatefulWidget {

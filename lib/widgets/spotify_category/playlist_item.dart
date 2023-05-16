@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../colors.dart';
+import '../../colors.dart';
 
 class PlayListItem extends StatefulWidget {
   final String name;
