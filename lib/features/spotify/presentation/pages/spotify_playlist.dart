@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spotify_africa_assessment/api/spotifyApi.dart';
 import 'package:flutter_spotify_africa_assessment/colors.dart';
 import 'package:flutter_spotify_africa_assessment/widgets/spotify_playlist/trackcard.dart';
+import 'package:intl/intl.dart';
 
 //TODO: complete this page - you may choose to change it to a stateful widget if necessary
 class SpotifyPlaylist extends StatefulWidget {
@@ -97,7 +98,7 @@ class _SpotifyPlaylistState extends State<SpotifyPlaylist> {
                               child: Container(
                                 padding: const EdgeInsets.only(right: 15.0),
                                 child: Text(
-                                  '$followers  Followers',
+                                  '${formatFollowers(followers.toString())}  Followers',
                                   style: const TextStyle(
                                     fontSize: 16,
                                   ),
@@ -169,5 +170,7 @@ class _SpotifyPlaylistState extends State<SpotifyPlaylist> {
   }
 }
 
-
-
+String formatFollowers(String numberString) {
+  final numberFormat = NumberFormat('#,##0');
+  return numberFormat.format(int.parse(numberString));
+}
