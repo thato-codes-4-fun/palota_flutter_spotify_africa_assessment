@@ -37,10 +37,16 @@ Widget trackCard(
                   maxLines: 1,
                   style: const TextStyle(
                     fontSize: 16,
+                    fontWeight: FontWeight.bold,
                   ),
                   overflow: TextOverflow.ellipsis,
                 ),
-                Text(trackArtist),
+                Text(
+                  trackArtist,
+                  style: TextStyle(
+                    color: Colors.grey[300],
+                  ),
+                ),
               ],
             ),
           ],
@@ -65,6 +71,3 @@ String formatTime(int totalMilliseconds) {
 
   return '$formattedMinutes:$formattedSeconds';
 }
-
-
-
