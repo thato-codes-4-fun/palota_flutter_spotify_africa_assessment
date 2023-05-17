@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spotify_africa_assessment/api/spotifyApi.dart';
+import 'package:flutter_spotify_africa_assessment/api/spotify_api.dart';
 import 'package:flutter_spotify_africa_assessment/colors.dart';
 import 'package:flutter_spotify_africa_assessment/widgets/spotify_playlist/spotify_artist_card.dart';
 import 'package:flutter_spotify_africa_assessment/widgets/spotify_playlist/trackcard.dart';
