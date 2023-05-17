@@ -1,3 +1,120 @@
+#Submission
+##################
+
+
+# Spotify API Submission
+
+This is a Flutter mobile application that integrates with the Spotify API to provide music-related features. The app allows users to see all playlists from a gentre, view specific playlist
+
+## Features
+
+- **View Afro playlists**: Users can view all playlists in AFRO .
+
+- **View specific playlist**: Users can click into a playlist and view details regarding that playlist.
+
+
+
+## Technologies Used
+
+- Flutter: A cross-platform framework for building mobile applications.
+
+- Spotify API: Integration with the Spotify Web API to access music-related data, .
+
+- HTTP Package: Used to handle API requests and responses.
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/thato-codes-4-fun/palota_flutter_spotify_africa_assessment.git
+```
+
+2. Navigate to the project directory:
+
+```bash
+cd spalota_flutter_spotify_africa_assessment
+```
+
+3. Install the dependencies:
+
+```bash
+flutter pub get
+```
+
+4. Run the app:
+
+```bash
+flutter run
+```
+
+Make sure you have set up the necessary Flutter development environment and have a compatible device or emulator running.
+
+## Configuration
+
+Data Source
+The data will come from a custom RESTful API that serves music category and playlist data based on Spotify Data.
+
+Authentication
+An API key will be sent will be sent to you separately. The apiKey should be sent as a header with name x-functions-key. E.g:
+
+curl --location --request GET 'https://palota-jobs-africa-spotify-fa.azurewebsites.net/api/browse/categories/afro' \
+--header 'x-functions-key: {apiKey}'
+Available Endpoints
+The base URL for all calls is: https://palota-jobs-africa-spotify-fa.azurewebsites.net/api
+
+Description	Method	Route	Comments
+Get single category	GET	browse/categories/{categoryId}	Spotify Documentation https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-a-category N.B.: The only supported category id is afro
+List paginated playlist summaries	GET	browse/categories/{categoryId}/playlists	Spotify Documentation https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-a-categories-playlists N.B.: The only query parameters supported are offset and limit. These help with pagination. Hint: Not all results can be returned at once by API
+Get single playlist	GET	playlists/{playlistId}	Spotify Documentation https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-playlist
+Get single artist	GET	artists/{artistId}	Spotify Documentation https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-an-artist
+
+```dart
+const String kClientId = 'YOUR_CLIENT_ID';
+const String kClientSecret = 'YOUR_CLIENT_SECRET';
+```
+
+## Final Thoughts
+    Thank you for this amazing opportunity, I had been primarly coding in green feilds for flutter
+    so to come in on a flutter brownfields assesment has been truly awesome.
+
+    ## Challenges faced
+        - pagination for an API was certainly something new for me. I had to research how to do it and 
+        implementation took a bit of time
+
+        -The last task of getting specific artist data
+        -Further more it had to be unique 
+        -this proved very challenging 
+        -unfortunatly i was unable to complete this
+
+    ## What would i do differently if if had to start again
+        - take a break more often , everytime i got stuck
+        i would try solve the problem instead of taking a break
+
+    ## Which bits did I enjoy 
+        - implenting the UI
+        - the challenge of starting a brownfields product
+        - the new concepts I learned namely screen pagination
+
+    ## what would i do next if i had more time?
+        - Finish with featured artist
+        - implement search
+        - implement music preview
+            - I noticed in the api there was a priview for the music about a 30sec music clip
+            - I would definetly implement this feature if i had more time.
+
+
+
+
+
+
+
+
+
+
+
+
+###############
 # Palota Spotify Africa Assessment
 
 Palota assessment starter project | Palota Spotify Africa (Afro Category) Assessment

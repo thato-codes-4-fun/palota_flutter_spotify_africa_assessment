@@ -78,7 +78,7 @@ Future<dynamic> spotifyGetSpecificPlayList(String playlistID) async {
 //name
 Future<dynamic> spotifyGetSpecificArtist(String artistID) async {
   var url = Uri.parse(
-      'https://palota-jobs-africa-spotify-fa.azurewebsites.net/api/playlists/$artistID');
+      'https://palota-jobs-africa-spotify-fa.azurewebsites.net/api/artists/$artistID');
 
   var response = await http.get(url, headers: {
     'Content-Type': 'application/json',
@@ -89,10 +89,9 @@ Future<dynamic> spotifyGetSpecificArtist(String artistID) async {
   if (response.statusCode == 200) {
     // Request successful
     var data = jsonDecode(response.body);
-
     return data;
   } else {
     // Request failed
-    return [];
+    return 'error';
   }
 }

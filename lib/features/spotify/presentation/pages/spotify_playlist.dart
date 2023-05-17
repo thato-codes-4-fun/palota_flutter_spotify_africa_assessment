@@ -1,7 +1,8 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_spotify_africa_assessment/api/spotify_api.dart';
 import 'package:flutter_spotify_africa_assessment/colors.dart';
-import 'package:flutter_spotify_africa_assessment/widgets/spotify_playlist/spotify_artist_card.dart';
 import 'package:flutter_spotify_africa_assessment/widgets/spotify_playlist/trackcard.dart';
 import 'package:intl/intl.dart';
 
@@ -20,7 +21,13 @@ class SpotifyPlaylist extends StatefulWidget {
 class _SpotifyPlaylistState extends State<SpotifyPlaylist> {
   //list of playlist populated once application loads
   late Future<dynamic> playlist;
-  late Future<List> artistIDs;
+  late Future<List> artistdata;
+  final scrollController = ScrollController();
+  final Set<String> uniqueIDs = HashSet<String>();
+  bool loadData = false;
+
+  Future<void> fecthData() async {}
+
   @override
   void initState() {
     super.initState();
@@ -147,6 +154,8 @@ class _SpotifyPlaylistState extends State<SpotifyPlaylist> {
                           int trackDuration =
                               tracks[index]['track']['duration_ms'];
                           List trackArtist = tracks[index]['track']['artists'];
+
+                          uniqueIDs.add(trackArtist[0]['id']);
                           String imageUrl = tracks[index]['track']['album']
                               ['images'][0]['url'];
                           return trackCard(
@@ -189,10 +198,32 @@ class _SpotifyPlaylistState extends State<SpotifyPlaylist> {
                         height: 143,
                         width: MediaQuery.of(context).size.width,
                         child: ListView.builder(
-                            itemCount: 10,
+                            controller: scrollController,
+                            itemCount: uniqueIDs.length,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (BuildContext context, int index) {
-                              return const SpotifyArtistCard();
+                              Future artist = spotifyGetSpecificArtist(
+                                  uniqueIDs.toList()[index]);
+
+                              return FutureBuilder(
+                                future: artist,
+                                builder: (BuildContext context, snapshot) {
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.done) {
+                                    if (snapshot.hasData) {
+                                      return const Text('data');
+                                    } else if (snapshot.hasError) {
+                                      return const Text('Error');
+                                    } else {
+                                      return const Text('no data');
+                                    }
+                                  } else {
+                                    return const Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  }
+                                },
+                              );
                             }),
                       )
                     ],

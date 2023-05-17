@@ -49,7 +49,7 @@ Widget trackCard(
                     shrinkWrap: true,
                     itemCount: trackArtist.length,
                     itemBuilder: (BuildContext context, int index) => Container(
-                      //padding: const EdgeInsets.only(right: 5),
+                      padding: const EdgeInsets.only(right: 2),
                       child: Text(
                         index != trackArtist.length - 1
                             ? '${trackArtist[index]["name"]} ,'
