@@ -4,7 +4,6 @@ import 'package:flutter_spotify_africa_assessment/colors.dart';
 import 'package:flutter_spotify_africa_assessment/widgets/spotify_playlist/trackcard.dart';
 import 'package:intl/intl.dart';
 
-//TODO: complete this page - you may choose to change it to a stateful widget if necessary
 class SpotifyPlaylist extends StatefulWidget {
   final String playListID;
 
@@ -28,7 +27,10 @@ class _SpotifyPlaylistState extends State<SpotifyPlaylist> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 1,
+      ),
       body: FutureBuilder(
         future: playlist,
         builder: (BuildContext context, snapshot) {
@@ -109,7 +111,7 @@ class _SpotifyPlaylistState extends State<SpotifyPlaylist> {
                         ),
                       ),
                       const SizedBox(
-                        height: 16,
+                        height: 20,
                       ),
                       Container(
                         width: 326,
@@ -125,6 +127,9 @@ class _SpotifyPlaylistState extends State<SpotifyPlaylist> {
                             ],
                           ),
                         ),
+                      ),
+                      const SizedBox(
+                        height: 32,
                       ),
                       ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
@@ -145,6 +150,33 @@ class _SpotifyPlaylistState extends State<SpotifyPlaylist> {
                           );
                         },
                         itemCount: tracks.length,
+                      ),
+                      const SizedBox(
+                        height: 34,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            width: 342,
+                            decoration: const BoxDecoration(
+                              color: AppColors.greyish,
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(20),
+                                bottomRight: Radius.circular(20),
+                              ),
+                            ),
+                            padding: const EdgeInsets.all(30),
+                            child: const Text(
+                              'Featured Artist',
+                              style: TextStyle(
+                                fontSize: 29,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
                       )
                     ],
                   ),

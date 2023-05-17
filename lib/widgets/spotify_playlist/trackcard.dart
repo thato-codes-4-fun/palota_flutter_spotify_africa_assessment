@@ -7,7 +7,7 @@ Widget trackCard(
   String trackArtist,
 ) {
   return Container(
-    margin: const EdgeInsets.only(top: 30),
+    margin: const EdgeInsets.only(bottom: 16),
     padding: const EdgeInsets.only(left: 16, right: 16),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -15,14 +15,13 @@ Widget trackCard(
         //image
         Row(
           children: [
-            Image.network(
-              imageUrl,
-              width: 50,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.network(
+                imageUrl,
+                width: 50,
+              ),
             ),
-            //column
-            //track name
-            //artist
-            //duration
             const SizedBox(
               width: 10,
             ),
