@@ -4,7 +4,7 @@ Widget trackCard(
   String trackName,
   String imageUrl,
   int trackDuration,
-  String trackArtist,
+  List trackArtist,
 ) {
   return Container(
     margin: const EdgeInsets.only(bottom: 16),
@@ -40,10 +40,25 @@ Widget trackCard(
                   ),
                   overflow: TextOverflow.ellipsis,
                 ),
-                Text(
-                  trackArtist,
-                  style: TextStyle(
-                    color: Colors.grey[300],
+                SizedBox(
+                  width: 241,
+                  height: 15,
+                  child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    itemCount: trackArtist.length,
+                    itemBuilder: (BuildContext context, int index) => Container(
+                      //padding: const EdgeInsets.only(right: 5),
+                      child: Text(
+                        index != trackArtist.length - 1
+                            ? '${trackArtist[index]["name"]} ,'
+                            : '${trackArtist[index]["name"]}',
+                        style: TextStyle(
+                          color: Colors.grey[300],
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ],

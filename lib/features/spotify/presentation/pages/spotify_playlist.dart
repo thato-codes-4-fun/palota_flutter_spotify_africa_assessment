@@ -139,8 +139,7 @@ class _SpotifyPlaylistState extends State<SpotifyPlaylist> {
                           String trackName = tracks[index]['track']['name'];
                           int trackDuration =
                               tracks[index]['track']['duration_ms'];
-                          String trackArtist =
-                              tracks[index]['track']['artists'][0]['name'];
+                          List trackArtist = tracks[index]['track']['artists'];
                           String imageUrl = tracks[index]['track']['album']
                               ['images'][0]['url'];
                           return trackCard(
