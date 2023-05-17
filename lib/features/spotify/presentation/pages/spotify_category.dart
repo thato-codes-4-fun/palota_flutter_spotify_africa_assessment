@@ -3,7 +3,7 @@ import 'package:flutter_spotify_africa_assessment/colors.dart';
 import 'package:flutter_spotify_africa_assessment/routes.dart';
 import 'package:flutter_spotify_africa_assessment/widgets/spotify_category/header.dart';
 import 'package:flutter_spotify_africa_assessment/widgets/spotify_category/playlist_item.dart';
-import '../../../../api/spotifyApi.dart';
+import '../../../../api/spotify_api.dart';
 
 class SpotifyCategory extends StatefulWidget {
   final String categoryId;
@@ -22,7 +22,7 @@ class _SpotifyCategoryState extends State<SpotifyCategory> {
   int limit = 10;
   List data = [];
   bool isLoading = false;
-  String name = 'Afro';
+  String name = 'blah';
   String imageUrl =
       'https://t.scdn.co/images/b505b01bbe0e490cbe43b07f16212892.jpeg';
 
@@ -36,8 +36,11 @@ class _SpotifyCategoryState extends State<SpotifyCategory> {
 
   Future<void> fetchData() async {
     var playList = await spotifyGetPlayLists(offset, limit);
+    var headerDetails = await spotifyHeader(widget.categoryId);
     setState(() {
       data += playList;
+      imageUrl = headerDetails['icons'][0]['url'];
+      name = headerDetails['name'];
     });
   }
 
@@ -60,7 +63,7 @@ class _SpotifyCategoryState extends State<SpotifyCategory> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Afro"),
+        title: Text(name),
         actions: [
           IconButton(
             icon: const Icon(Icons.info_outline),
@@ -92,8 +95,10 @@ class _SpotifyCategoryState extends State<SpotifyCategory> {
             slivers: [
               SliverAppBar(
                 toolbarHeight: 80,
-                title:
-                    PlaylistHeader(imageUrl: imageUrl, name: widget.categoryId),
+                title: PlaylistHeader(
+                  imageUrl: imageUrl,
+                  name: name,
+                ),
               ),
               SliverPadding(
                 padding: const EdgeInsets.only(top: 30),

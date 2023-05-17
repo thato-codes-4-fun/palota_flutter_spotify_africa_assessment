@@ -18,10 +18,13 @@ class SpotifyPlaylist extends StatefulWidget {
 }
 
 class _SpotifyPlaylistState extends State<SpotifyPlaylist> {
+  //list of playlist populated once application loads
   late Future<dynamic> playlist;
+  late Future<List> artistIDs;
   @override
   void initState() {
     super.initState();
+    //on application load get specific playlist based on ID
     playlist = spotifyGetSpecificPlayList(widget.playListID);
   }
 
@@ -32,11 +35,14 @@ class _SpotifyPlaylistState extends State<SpotifyPlaylist> {
         backgroundColor: Colors.transparent,
         elevation: 1,
       ),
+
+      //will build our playlist screen once playlist data has loaded
       body: FutureBuilder(
         future: playlist,
         builder: (BuildContext context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasData) {
+              //declarations for data needed
               String description = snapshot.data['description'];
               String image = snapshot.data['images'][0]['url'];
               String name = snapshot.data['name'];
@@ -50,7 +56,7 @@ class _SpotifyPlaylistState extends State<SpotifyPlaylist> {
                       const SizedBox(
                         height: 40,
                       ),
-                      //image
+                      //Playlist image and name
                       Container(
                         decoration: BoxDecoration(
                           color: AppColors.greyish,
@@ -74,6 +80,7 @@ class _SpotifyPlaylistState extends State<SpotifyPlaylist> {
                           ),
                         ]),
                       ),
+                      //followers container
                       Container(
                         alignment: Alignment.topLeft,
                         padding: const EdgeInsets.all(20),
@@ -212,6 +219,7 @@ class _SpotifyPlaylistState extends State<SpotifyPlaylist> {
   }
 }
 
+//helper function to format followers
 String formatFollowers(String numberString) {
   final numberFormat = NumberFormat('#,##0');
   return numberFormat.format(int.parse(numberString));

@@ -4,9 +4,9 @@ import 'dart:convert';
 //will get the header data
 //category name
 //category image url
-Future<dynamic> spotifyHeader() async {
+Future<dynamic> spotifyHeader(categoryId) async {
   var url = Uri.parse(
-      'https://palota-jobs-africa-spotify-fa.azurewebsites.net/api/browse/categories/afro/');
+      'https://palota-jobs-africa-spotify-fa.azurewebsites.net/api/browse/categories/$categoryId/');
 
   var response = await http.get(url, headers: {
     'Content-Type': 'application/json',
