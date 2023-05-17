@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spotify_africa_assessment/api/spotifyApi.dart';
 import 'package:flutter_spotify_africa_assessment/colors.dart';
+import 'package:flutter_spotify_africa_assessment/widgets/spotify_playlist/spotify_artist_card.dart';
 import 'package:flutter_spotify_africa_assessment/widgets/spotify_playlist/trackcard.dart';
 import 'package:intl/intl.dart';
 
@@ -152,7 +153,7 @@ class _SpotifyPlaylistState extends State<SpotifyPlaylist> {
                         itemCount: tracks.length,
                       ),
                       const SizedBox(
-                        height: 34,
+                        height: 24,
                       ),
                       Row(
                         children: [
@@ -176,7 +177,17 @@ class _SpotifyPlaylistState extends State<SpotifyPlaylist> {
                         ],
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 40,
+                      ),
+                      SizedBox(
+                        height: 143,
+                        width: MediaQuery.of(context).size.width,
+                        child: ListView.builder(
+                            itemCount: 10,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (BuildContext context, int index) {
+                              return const SpotifyArtistCard();
+                            }),
                       )
                     ],
                   ),
