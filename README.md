@@ -6,6 +6,8 @@
 
 This is a Flutter mobile application that integrates with the Spotify API to provide music-related features. The app allows users to see all playlists from a gentre, view specific playlist
 
+*** please note usually I would hide the api key in a .env for security purposes but for the sake of ease to asses my assessment I left it in the code!!!! ***
+
 ## Features
 
 - **View Afro playlists**: Users can view all playlists in AFRO .
